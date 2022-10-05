@@ -1,0 +1,22 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: canary
+
+bases:
+- ../../base
+
+resources:
+- gateway.yaml
+- namespace.yaml
+- virtualservice.yaml
+
+patchesJson6902:
+  - target:
+      version: v1alpha1
+      group: argoproj.io
+      kind: Rollout
+      name: rollouts-demo
+    patch: |-
+      - op: replace
+        path: /spec/template/spec/containers/0/image
+        value: argoproj/rollouts-demo:blue
