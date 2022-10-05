@@ -39,6 +39,10 @@ Then open in browser, example
 firefox $GATEWAY_URL
 ```
 
+You should see this
+
+![sample-app](img/sample-app.png)
+
 ## Make update
 
 Update the `canary/overlays/openshift/kustomization.yaml` file from `blue` to `yellow`. Edit the file by hand but if you're brave run a sed
