@@ -23,11 +23,18 @@ spec:
     metadata:
       name: '{{appName}}'
     spec:
+      ignoreDifferences:
+      - group: networking.istio.io
+        kind: VirtualService
+        jsonPointers:
+        - /spec/http/0
       project: default
       syncPolicy:
         automated:
           prune: true
           selfHeal: true
+        syncOptions:
+        - ApplyOutOfSyncOnly=true
         retry:
           limit: 7
           backoff:
