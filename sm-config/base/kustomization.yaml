@@ -3,3 +3,4 @@ kind: Kustomization
 
 resources:
 - servicemeshmemberroll-default.yaml
+- cluster-monitoring-config.yaml
