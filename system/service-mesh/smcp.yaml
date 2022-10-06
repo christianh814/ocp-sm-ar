@@ -1,6 +1,8 @@
 apiVersion: maistra.io/v2
 kind: ServiceMeshControlPlane
 metadata:
+  annotations:
+    argocd.argoproj.io/sync-wave: "31"
   name: smcp
   namespace: istio-system
 spec:
