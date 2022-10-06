@@ -7,6 +7,7 @@ commonAnnotations:
 resources:
 - istio-system-ns.yaml
 - openshift-operators-redhat-ns.yaml
+- openshift-distributed-tracing-ns.yaml
 - cluster-monitoring-config.yaml
 - elasticsearch-operator.yaml
 - isto-prom-rbac.yaml
