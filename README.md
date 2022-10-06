@@ -45,7 +45,7 @@ You should see this
 
 ## Make update
 
-Update the `workloads/canary-app/kustomization.yaml` file from `blue` to `yellow`. Edit the file by hand but if you're brave run a sed
+Update the `workloads/canary-app/kustomization.yaml` file from `blue` to `yellow`. Edit the file by hand but if you're brave, you can run a `sed` on the file.
 
 ```shell
 sed -i 's/blue/yellow/g' workloads/canary-app/kustomization.yaml
