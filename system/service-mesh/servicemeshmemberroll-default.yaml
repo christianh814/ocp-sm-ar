@@ -3,6 +3,7 @@ kind: ServiceMeshMemberRoll
 metadata:
   annotations:
     argocd.argoproj.io/sync-wave: "21"
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
   name: default
   namespace: istio-system
 spec:

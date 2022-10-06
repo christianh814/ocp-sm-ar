@@ -1,0 +1,10 @@
+apiVersion: operators.coreos.com/v1
+kind: OperatorGroup
+metadata:
+  annotations:
+    argocd.argoproj.io/sync-wave: "5"
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+  generateName: openshift-operators-redhat-
+  namespace: openshift-operators-redhat
+spec:
+  upgradeStrategy: Default
