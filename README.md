@@ -41,7 +41,7 @@ firefox $GATEWAY_URL
 
 You should see this
 
-![sample-app](img/sample-app.png)
+![sample-app](https://i.ibb.co/G2gY1b5/sample-app.png)
 
 ## Make update
 
