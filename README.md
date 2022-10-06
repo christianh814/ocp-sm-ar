@@ -21,8 +21,10 @@ First, fork this repo. You will need to change the [Application Sets in this dir
 
 After editing the [Application Sets in this directory](components/applicationsets)  to point to your fork, apply it to your OCP cluster
 
+> **NOTE** Errors are expected in this step. Go get some coffee, go for a walk, then comeback to this.
+
 ```shell
-until oc apply -k bootstrap/overlays/default/; do sleep 10; done
+until oc apply -k bootstrap/overlays/default/; do sleep 15; done
 ```
 
 ## See the App
