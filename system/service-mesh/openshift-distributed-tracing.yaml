@@ -2,9 +2,9 @@ apiVersion: operators.coreos.com/v1
 kind: OperatorGroup
 metadata:
   generateName: openshift-distributed-tracing-
+  name: openshift-distributed-tracing
   namespace: openshift-distributed-tracing
   annotations:
     argocd.argoproj.io/sync-wave: "5"
-    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
 spec:
   upgradeStrategy: Default

@@ -3,7 +3,6 @@ kind: ServiceMonitor
 metadata:
   annotations:
     argocd.argoproj.io/sync-wave: "30"
-    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
   name: istio-federation
   namespace: istio-system
   labels:

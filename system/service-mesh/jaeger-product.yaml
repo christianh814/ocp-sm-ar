@@ -3,7 +3,6 @@ kind: Subscription
 metadata:
   annotations:
     argocd.argoproj.io/sync-wave: "11"
-    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
   name: jaeger-product
   namespace: openshift-distributed-tracing
 spec:
