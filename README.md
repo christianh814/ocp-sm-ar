@@ -5,6 +5,9 @@ Example Repo that does what the title says.
 # Prereqs
 
 * OpenShift Cluster v4.10+
+* [Argo Rollout Kubernetes CLI Plugin](https://argoproj.github.io/argo-rollouts/installation/#kubectl-plugin-installation)
+
+This repo assumes that this is a "fresh" cluster. Don't run these steps on a production cluster or a cluster you care about. This is for testing only.
 
 # Testing
 
@@ -16,7 +19,7 @@ First, fork this repo. You will need to change the [Application Sets in this dir
 
 ## Deploy the Application
 
-After editing the `example-sm-canary.yaml` file to point to your fork, apply it to your OCP cluster
+After editing the [Application Sets in this directory](components/applicationsets)  to point to your fork, apply it to your OCP cluster
 
 ```shell
 until oc apply -k bootstrap/overlays/default/; do sleep 10; done
@@ -42,10 +45,10 @@ You should see this
 
 ## Make update
 
-Update the `canary/overlays/openshift/kustomization.yaml` file from `blue` to `yellow`. Edit the file by hand but if you're brave run a sed
+Update the `workloads/canary-app/kustomization.yaml` file from `blue` to `yellow`. Edit the file by hand but if you're brave run a sed
 
 ```shell
-sed -i 's/blue/yellow/g' canary/overlays/openshift/kustomization.yaml
+sed -i 's/blue/yellow/g' workloads/canary-app/kustomization.yaml
 ```
 
 Then commit/push to your fork
