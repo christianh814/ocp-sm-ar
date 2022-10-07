@@ -27,13 +27,13 @@ spec:
           protocol: TCP
   strategy:
     canary:
-      analysis:
-        startingStep: 2 # delay starting analysis run until setWeight: 60
-        args:
-        - name: service-name
-          value: rollouts-demo-canary.canary.svc.cluster.local
-        templates:
-          - templateName: success-rate
+     ## analysis:
+     ##   startingStep: 2 # delay starting analysis run until setWeight: 60
+     ##   args:
+     ##   - name: service-name
+     ##     value: rollouts-demo-canary.canary.svc.cluster.local
+     ##   templates:
+     ##     - templateName: success-rate
       canaryService: rollouts-demo-canary
       stableService: rollouts-demo-stable
       trafficRouting:
