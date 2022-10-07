@@ -5,11 +5,12 @@ namespace: canary
 
 resources:
 - namespace.yaml
-- gateway.yaml
-- rollout.yaml
 - service-canary.yaml
 - service-stable.yaml
+- rollout.yaml
+- analysistemplate.yaml
 - virtualservice.yaml
+- gateway.yaml
 
 patchesJson6902:
   - target:
