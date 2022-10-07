@@ -19,6 +19,9 @@ spec:
         kind: VirtualService
         jsonPointers:
         - /spec/http/0
+      - kind: ConfigMap
+        jsonPointers:
+        - /data/service-ca.crt
       project: system
       syncPolicy:
         automated:
