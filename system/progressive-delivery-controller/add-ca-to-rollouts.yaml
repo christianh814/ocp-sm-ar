@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: argo-rollouts
+spec:
+  template:
+    spec:
+      containers:
+      - name: argo-rollouts
+        volumeMounts:
+        - name: cabundle
+          mountPath: /etc/pki/ca-trust/extracted/pem
+          readOnly: true
+      volumes:
+      - name: cabundle
+        configMap:
+          name: cabundle
+          items:
+            - key: service-ca.crt 
+              path: ca-bundle.pem 
