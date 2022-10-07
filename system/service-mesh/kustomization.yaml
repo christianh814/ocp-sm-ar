@@ -19,3 +19,4 @@ resources:
 - servicemeshoperator.yaml
 - service-monitor.yaml
 - smcp.yaml
+- isto-system-prometheus-htpasswd.yaml
