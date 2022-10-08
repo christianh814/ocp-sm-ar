@@ -9,12 +9,14 @@ spec:
       - name: argo-rollouts
         volumeMounts:
         - name: cabundle
-          mountPath: /etc/pki/ca-trust/extracted/pem
+          mountPath: /etc/ssl/certs/ca-certificates.crt
           readOnly: true
+          subPath: ca-certificates.crt
       volumes:
       - name: cabundle
         configMap:
           name: cabundle
+          defaultMode: 420
           items:
             - key: service-ca.crt 
-              path: ca-bundle.pem 
+              path: ca-certificates.crt
