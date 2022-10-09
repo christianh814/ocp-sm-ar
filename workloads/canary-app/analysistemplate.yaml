@@ -11,11 +11,11 @@ spec:
     # NOTE: prometheus queries return results in the form of a vector.
     # So it is common to access the index 0 of the returned array to obtain the value
     # SEE: https://argoproj.github.io/argo-rollouts/features/analysis/#prometheus
-    ####successCondition: len(result) == 0 || result[0] >= 0.95
-    successCondition: len(result) > 0 && result[0] >= 0.95
+    ####successCondition: len(result) > 0 && result[0] >= 0.95
+    successCondition: len(result) == 0 || result[0] >= 0.95
     failureLimit: 3
     provider:
       prometheus:
         address: https://internal:demo@prometheus.istio-system.svc.cluster.local:9090
         query: |
-          sum(irate(istio_requests_total{reporter="source",destination_service=~"{{args.service-name}}",response_code!~"5.*"}[5s]))
+          sum(irate(istio_requests_total{reporter="source",destination_service=~"{{args.service-name}}",response_code!~"5.*"}[30s]))
