@@ -7,7 +7,7 @@ spec:
   - name: service-name
   metrics:
   - name: success-rate
-    interval: 5m
+    interval: 30s
     # NOTE: prometheus queries return results in the form of a vector.
     # So it is common to access the index 0 of the returned array to obtain the value
     # SEE: https://argoproj.github.io/argo-rollouts/features/analysis/#prometheus
@@ -17,7 +17,7 @@ spec:
     provider:
       prometheus:
         address: https://internal:demo@prometheus.istio-system.svc.cluster.local:9090
-        query: >+
+        query: |
           sum(irate(istio_requests_total{
             reporter="source",
             destination_service=~"{{args.service-name}}",
