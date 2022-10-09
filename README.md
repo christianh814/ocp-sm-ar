@@ -69,4 +69,62 @@ Get status using the plugin (running a `watch` is helpful)
 oc argo rollouts get rollout rollouts-demo -n canary
 ```
 
-You'll see that the blue squares turn into yellow ones. It increases every 10 seconds until you're fully yellow
+You'll see that the blue squares turn into yellow ones. It increases every 15 (or so) seconds until you're fully yellow
+
+## Auto-Rollback
+
+In the UI, you'll see a slider that causes the application to return a 500 error
+
+![500err](https://i.ibb.co/LzzWqX4/witherr.jpg)
+
+Change the application back to blue
+
+```shell
+sed -i 's/yellow/blue/g' workloads/canary-app/kustomization.yaml
+```
+
+Commit and push...
+
+```shell
+git add .
+git commit -am "blue with errors"
+git push
+```
+
+Initiate the rollout by refreshing the Argo CD "canary-app" Application. This will initiate a rollout.
+
+Once the rollout has started, slide the error slider on the application to 100% and watch as the rollout fails
+
+```shell
+oc argo rollouts get rollout rollouts-demo -n canary
+```
+
+It should fail and it should look something like this...
+
+```shell
+NAME                                       KIND         STATUS        AGE    INFO
+⟳ rollouts-demo                            Rollout      ✖ Degraded    3h27m  
+├──# revision:26                                                             
+│  ├──⧉ rollouts-demo-6499d5bbb9           ReplicaSet   • ScaledDown  16m    canary,delay:passed
+│  └──α rollouts-demo-6499d5bbb9-26        AnalysisRun  ✖ Failed      2m44s  ✖ 3
+├──# revision:25                                                             
+│  ├──⧉ rollouts-demo-785bb66569           ReplicaSet   ✔ Healthy     41m    stable
+│  │  ├──□ rollouts-demo-785bb66569-7gwpj  Pod          ✔ Running     13m    ready:2/2
+│  │  ├──□ rollouts-demo-785bb66569-hqmlc  Pod          ✔ Running     13m    ready:2/2
+│  │  ├──□ rollouts-demo-785bb66569-rm7j5  Pod          ✔ Running     13m    ready:2/2
+│  │  ├──□ rollouts-demo-785bb66569-mjcq5  Pod          ✔ Running     12m    ready:2/2
+│  │  ├──□ rollouts-demo-785bb66569-h4tzf  Pod          ✔ Running     12m    ready:2/2
+│  │  ├──□ rollouts-demo-785bb66569-v6qn2  Pod          ✔ Running     12m    ready:2/2
+│  │  ├──□ rollouts-demo-785bb66569-fvvmb  Pod          ✔ Running     11m    ready:2/2
+│  │  ├──□ rollouts-demo-785bb66569-jdt27  Pod          ✔ Running     11m    ready:2/2
+│  │  ├──□ rollouts-demo-785bb66569-f6krk  Pod          ✔ Running     11m    ready:2/2
+│  │  └──□ rollouts-demo-785bb66569-w7w6w  Pod          ✔ Running     11m    ready:2/2
+```
+
+Your app should have failed back to being all yellow since you had errors during the rollout. To restart/fix this. Move the error slider to 0% and restart the rollout.
+
+```shell
+oc argo rollouts retry rollout rollouts-demo -n canary
+```
+
+This time, the rollout should finish and you should have blue squares.
