@@ -43,11 +43,15 @@ spec:
             routes:
             - primary
       steps:
-      - setWeight: 30
+      - setWeight: 20
       - pause: { duration: 30s }
+      - setWeight: 40
+      - pause: { duration: 15s }
       - setWeight: 60
       - pause: { duration: 15s }
+      - setWeight: 80
+      - pause: { duration: 15s }
       - setWeight: 90
-      - pause: { duration: 15s }
+      - pause: { duration: 10s }
       - setWeight: 100
-      - pause: { duration: 15s }
+      - pause: { duration: 10s }
