@@ -21,10 +21,5 @@ spec:
           sum(irate(istio_requests_total{
             reporter="source",
             destination_service=~"{{args.service-name}}",
-            response_code!~"5.*"}[10s])
-          )
-          /
-          sum(irate(istio_requests_total{
-            reporter="source",
-            destination_service=~"{{args.service-name}}"}[10s])
+            response_code!~"5.*"}[30s])
           )
