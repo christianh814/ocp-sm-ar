@@ -44,14 +44,14 @@ spec:
             - primary
       steps:
       - setWeight: 30
-      - pause: { duration: 30s }
+      - pause: { duration: 20s }
       - setWeight: 40
-      - pause: { duration: 15s }
+      - pause: { duration: 10s }
       - setWeight: 60
-      - pause: { duration: 15s }
+      - pause: { duration: 10s }
       - setWeight: 80
-      - pause: { duration: 10s }
+      - pause: { duration: 5s }
       - setWeight: 90
-      - pause: { duration: 10s }
+      - pause: { duration: 5s }
       - setWeight: 100
-      - pause: { duration: 10s }
+      - pause: { duration: 5s }
