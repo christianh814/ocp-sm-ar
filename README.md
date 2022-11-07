@@ -1,6 +1,6 @@
 # OpenShift Service Mesh with Argo Rollouts
 
-Example Repo that does what the title says.
+Example Repo that does what the title says. You can watch a demo of this repo: [HERE](https://youtu.be/DfeL7cdTx4c)
 
 # Prereqs
 
