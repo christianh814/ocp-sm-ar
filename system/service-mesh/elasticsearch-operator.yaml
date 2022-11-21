@@ -11,4 +11,4 @@ spec:
   name: elasticsearch-operator
   source: redhat-operators
   sourceNamespace: openshift-marketplace
-  startingCSV: elasticsearch-operator.5.5.3
+  startingCSV: elasticsearch-operator.5.5.4
