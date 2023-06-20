@@ -10,5 +10,5 @@ resources:
 
 ## This is needed becuase Argo Rollouts doesn't support adding CA info on the Prometheus provider
 ## see: https://github.com/argoproj/argo-rollouts/issues/2298
-patchesStrategicMerge:
-- add-ca-to-rollouts.yaml
+patches:
+  - path: add-ca-to-rollouts.yaml
